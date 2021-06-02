@@ -7,14 +7,16 @@ import java.util.Arrays;
 
 @Data
 public class Message {
+
     private Integer cType;
     private Integer bUserId;
 
     /* easy to save message in byte array for encoding and etc. */
     private byte [] message;
 
+    public static final int MAX_MESSAGE_SIZE = 255;
     public static final int BYTES_WITHOUT_MESSAGE = Integer.BYTES * 2;
-
+    public static final int BYTES_MAX_SIZE = BYTES_WITHOUT_MESSAGE + MAX_MESSAGE_SIZE;
 
     public Message(int cType, int bUserId, byte[] message) {
         this.cType = cType;

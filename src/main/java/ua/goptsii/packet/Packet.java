@@ -8,7 +8,7 @@ import java.nio.ByteBuffer;
 
 @Data
 public class Packet {
-    private Byte bMagic = 0x13;
+    private static Byte bMagic = 0x13;
     private Byte bSrc;
     private UnsignedLong bPktId;
 
@@ -18,7 +18,11 @@ public class Packet {
     private Message bMsq;
     private Short wCrc16_2;
 
-    public static final int LENGTH_FIRST_PART_PACKAGE = Byte.BYTES + Byte.BYTES + Long.BYTES + Integer.BYTES;
+
+    public final static  Integer packetPartFirstLengthWothoutLen =  bMagic.BYTES + Byte.BYTES + Long.BYTES;
+    public final static Integer LENGTH_FIRST_PART_PACKAGE = packetPartFirstLengthWothoutLen + Integer.BYTES;
+    public final static Integer LENGTH_FIRST_PART_PACKAGE_WITH_CRC = LENGTH_FIRST_PART_PACKAGE +Short.BYTES;
+    public final static Integer PACKET_MAX_SIZE = LENGTH_FIRST_PART_PACKAGE_WITH_CRC + Message.BYTES_MAX_SIZE + Short.BYTES;
 
     public Packet(byte bSrc, UnsignedLong bPktId, Message bMsq) {
         this.bSrc = bSrc;

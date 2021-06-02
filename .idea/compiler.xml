@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CSPractice1" />
+        <module name="Practice1" />
         <module name="CSHomework2" />
       </profile>
     </annotationProcessing>
